@@ -5,8 +5,8 @@ import Navigation from './components/shared/Navigation/Navigation';
 import Authenticate from './pages/Authenticate/Authenticate';
 import Activate from './pages/Activate/Activate';
 import Rooms from './pages/Rooms/Rooms'
-import Login from './pages/Login/Login'
-import Register from './pages/Register/Register'
+// import Login from './pages/Login/Login'
+// import Register from './pages/Register/Register'
 const isAuth = false;
 const user = {
   activated: false,
