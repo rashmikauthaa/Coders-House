@@ -3,10 +3,24 @@ import Card from '../../../components/shared/Card/Card';
 import TextInput from '../../../components/shared/TextInput/TextInput';
 import Button from '../../../components/shared/Button/Button';
 import styles from './StepOtp.module.css';
+import { verifyOtp } from '../../../http';
+import { useSelector } from 'react-redux';
+
 
 const StepOtp = ({onNext}) => {
     const [otp, setOtp] = useState("");
-    function onNext () {}
+    const { phone, hash } = useSelector((state) => state.auth.otp);
+
+    async function submit () {
+        try{
+            const { data } = await verifyOtp({ otp, phone, hash });
+            console.log(data);
+        }
+        catch(error) {
+            console.log(error);
+        }
+        // onNext();
+    }
     return (
         <>
         <div className= {styles.cardWrapper}>
@@ -14,7 +28,7 @@ const StepOtp = ({onNext}) => {
                 <TextInput value={otp} onChange={(e) => setOtp(e.target.value)} />
                 
                 <div className={styles.actionButtonWrap}>
-                    <Button onClick={onNext} text="Next" />
+                    <Button onClick={submit} text="Next" />
                 </div>
 
                 <p className={styles.bottomParagraph}>
