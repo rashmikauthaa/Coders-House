@@ -5,21 +5,27 @@ import Button from '../../../components/shared/Button/Button';
 import styles from './StepOtp.module.css';
 import { verifyOtp } from '../../../http';
 import { useSelector } from 'react-redux';
+import { setAuth } from '../../../store/authSlice';
+import { useDispatch } from 'react-redux';
 
 
-const StepOtp = ({onNext}) => {
+
+const StepOtp = () => {
     const [otp, setOtp] = useState("");
+    const dispatch = useDispatch();
     const { phone, hash } = useSelector((state) => state.auth.otp);
 
     async function submit () {
         try{
             const { data } = await verifyOtp({ otp, phone, hash });
-            console.log(data);
+            // console.log(data);
+            dispatch(setAuth(data));
+           
         }
         catch(error) {
             console.log(error);
         }
-        // onNext();
+        
     }
     return (
         <>
