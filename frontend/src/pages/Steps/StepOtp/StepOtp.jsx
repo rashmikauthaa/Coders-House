@@ -29,7 +29,7 @@ const StepOtp = () => {
     }
     return (
         <>
-        <div className= {styles.cardWrapper}>
+        <div className= "cardWrapper">
             <Card title = "Enter the code we just texted you" icon="lock-emoji">
                 <TextInput value={otp} onChange={(e) => setOtp(e.target.value)} />
                 

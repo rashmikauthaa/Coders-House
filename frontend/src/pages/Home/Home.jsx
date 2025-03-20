@@ -19,7 +19,7 @@ const Home = () => {
     navigate('./authenticate');
   }
   return (
-    <div className={styles.cardWrapper}>
+    <div className="cardWrapper">
       <Card title="Welcome to CodersHouse!" icon="logo">
         <p className={styles.text}>
               We're working hard to get Codershouse ready for everyone! While we wrap

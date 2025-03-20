@@ -4,16 +4,21 @@ const app = express(); // create an express app instance
 const DbConnect = require('./database'); // conencts to DB
 const router = require('./routes');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 
+app.use(cookieParser());
 const corsOption = {
+    credentials: true,
     origin: ['http://localhost:5173']
 }
 
 app.use(cors(corsOption));
+app.use('/storage', express.static('storage'));
+
 
 const PORT = process.env.PORT || 5500; // set server port from (.env) or default to 5500
 DbConnect();
-app.use(express.json());
+app.use(express.json({limit: '8mb'}));
 app.use(router);
 
 app.get('/', (req, res) => {

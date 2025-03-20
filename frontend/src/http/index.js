@@ -1,17 +1,17 @@
 import axios from "axios";
 
-
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL,  // Use import.meta.env
+    baseURL: import.meta.env.VITE_API_URL, 
+    withCredentials: true,
     headers: {
-        'Content-type': 'application/json',
-        Accept: 'application/json'
+        "Content-Type": "application/json",
+        Accept: "application/json"
     }
 });
 
-
-// list of all the end points
-export const sendOtp = (data) => api.post('/api/send-otp', data);
-export const verifyOtp = (data) => api.post('/api/verify-otp', data);
+// List of all endpoints
+export const sendOtp = (data) => api.post("/api/send-otp", data);
+export const verifyOtp = (data) => api.post("/api/verify-otp", data);
+export const activate = (data) => api.post("/api/activate", data);
 
 export default api;
